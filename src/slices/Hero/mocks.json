@@ -1,0 +1,40 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Velit occaecat nisi fugiat aliqua fugiat eu labore minim. Sint labore magna excepteur. Cupidatat sit Lorem ex."
+						}
+					}
+				]
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Advice"
+						}
+					}
+				]
+			},
+			"button": {
+				"key": "efa1f7c8-696c-4255-bd86-1b93510c3d74",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev",
+					"text": "deal"
+				}
+			}
+		},
+		"items": []
+	}
+]
