@@ -69,7 +69,126 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomepageDocument;
+/**
+ * Item in *Seetings → Navigation*
+ */
+export interface SeetingsDocumentDataNavigationItem {
+  /**
+   * Link field in *Seetings → Navigation*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: seetings.navigation[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Item in *Seetings → Footer Skateboards*
+ */
+export interface SeetingsDocumentDataFooterSkateboardsItem {
+  /**
+   * Skateboard field in *Seetings → Footer Skateboards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: seetings.footer_skateboards[].skateboard
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  skateboard: prismic.ImageField<never>;
+}
+
+/**
+ * Content for Seetings documents
+ */
+interface SeetingsDocumentData {
+  /**
+   * Site Title field in *Seetings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: seetings.site_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  site_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Seetings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: seetings.meta_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Fallback OG Image field in *Seetings*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: seetings.fallback_og_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  fallback_og_image: prismic.ImageField<never>;
+
+  /**
+   * Navigation field in *Seetings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: seetings.navigation[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  navigation: prismic.GroupField<Simplify<SeetingsDocumentDataNavigationItem>>;
+
+  /**
+   * Footer Image field in *Seetings*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: seetings.footer_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  footer_image: prismic.ImageField<never>;
+
+  /**
+   * Footer Skateboards field in *Seetings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: seetings.footer_skateboards[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  footer_skateboards: prismic.GroupField<
+    Simplify<SeetingsDocumentDataFooterSkateboardsItem>
+  >;
+}
+
+/**
+ * Seetings document from Prismic
+ *
+ * - **API ID**: `seetings`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SeetingsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SeetingsDocumentData>,
+    "seetings",
+    Lang
+  >;
+
+export type AllDocumentTypes = HomepageDocument | SeetingsDocument;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -104,6 +223,46 @@ export interface HeroSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Skateboard Deck Texture field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.skateboard_deck_texture
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  skateboard_deck_texture: prismic.ImageField<never>;
+
+  /**
+   * Skateboard Wheel Texture field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.skateboard_wheel_texture
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  skateboard_wheel_texture: prismic.ImageField<never>;
+
+  /**
+   * Skateboard Truck Color field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.skateboard_truck_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  skateboard_truck_color: prismic.ColorField;
+
+  /**
+   * Skateboard Board Color field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.skateboard_board_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  skateboard_board_color: prismic.ColorField;
 }
 
 /**
@@ -157,6 +316,10 @@ declare module "@prismicio/client" {
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
+      SeetingsDocument,
+      SeetingsDocumentData,
+      SeetingsDocumentDataNavigationItem,
+      SeetingsDocumentDataFooterSkateboardsItem,
       AllDocumentTypes,
       HeroSlice,
       HeroSliceDefaultPrimary,
